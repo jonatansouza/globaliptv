@@ -7,28 +7,22 @@ package globaltv.ui;
 
 import globaltv.controller.GlobalTvController;
 import globaltv.models.ChannelModel;
+import globaltv.utils.BackgroundCustom;
 import globaltv.utils.FakeChannel;
 import globaltv.utils.HandlingImages;
 import java.awt.CardLayout;
 import java.awt.Desktop;
-import java.awt.Image;
+import java.awt.Graphics;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -92,6 +86,7 @@ public class ChannelsPanel extends javax.swing.JPanel {
         
         populatePanelSecundary(channelModels.isEmpty() ? new FakeChannel().getChannel() : channelModels.get(0));
     }
+    
     
     private void populatePanelSecundary(ChannelModel channel){
         channelModel = channel;
@@ -221,6 +216,11 @@ public class ChannelsPanel extends javax.swing.JPanel {
 
         editChannel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         editChannel.setText("Editar");
+        editChannel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editChannelActionPerformed(evt);
+            }
+        });
 
         watch.setText("Assistir");
         watch.addActionListener(new java.awt.event.ActionListener() {
@@ -233,22 +233,28 @@ public class ChannelsPanel extends javax.swing.JPanel {
         PanelSecundary.setLayout(PanelSecundaryLayout);
         PanelSecundaryLayout.setHorizontalGroup(
             PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(urlDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
-                .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelSecundaryLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editChannel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(watch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteChannel, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(urlDesc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nameDesc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(PanelSecundaryLayout.createSequentialGroup()
-                        .addContainerGap(90, Short.MAX_VALUE)
-                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(descPainelSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(iconDec, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(69, 69, 69))
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
+                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                                .addComponent(deleteChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
+                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(descPainelSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iconDec, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(57, 57, 57))))
         );
         PanelSecundaryLayout.setVerticalGroup(
             PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,17 +263,17 @@ public class ChannelsPanel extends javax.swing.JPanel {
                 .addComponent(descPainelSecundario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconDec, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(nameDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(urlDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(deleteChannel)
-                .addGap(18, 18, 18)
-                .addComponent(editChannel)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteChannel)
+                    .addComponent(editChannel))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         adminArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
@@ -357,7 +363,7 @@ public class ChannelsPanel extends javax.swing.JPanel {
 
     private void adminAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminAreaActionPerformed
          CardLayout cl = (CardLayout)contentPanel.getLayout();
-            cl.show(contentPanel, "admin-area");
+         cl.show(contentPanel, "admin-area");
     }//GEN-LAST:event_adminAreaActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -427,6 +433,17 @@ public class ChannelsPanel extends javax.swing.JPanel {
             
         }
     }//GEN-LAST:event_deleteChannelActionPerformed
+
+    private void editChannelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editChannelActionPerformed
+        if(this.channelModel != null){
+            globalTvController.setChannel(this.channelModel);
+        CardLayout cl = (CardLayout)contentPanel.getLayout();
+        cl.show(contentPanel, "edit-channel");
+        }else{
+            JOptionPane.showMessageDialog(contentPanel, "Não Ha nada para editar!");
+        }
+        
+    }//GEN-LAST:event_editChannelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

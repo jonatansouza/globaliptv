@@ -21,12 +21,23 @@ import java.util.List;
 public class GlobalTvController {
     private DataBaseController dataBaseController;
     private UserModel user;
+    private ChannelModel channel;
     
     public GlobalTvController() {
         dataBaseController = new DataBaseController();
+        this.channel = new ChannelModel();
         user = null;
     }
 
+    public ChannelModel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(ChannelModel channel) {
+        this.channel = channel;
+    }
+
+    
     public UserModel getUser() {
         return user;
     }
@@ -113,6 +124,10 @@ public class GlobalTvController {
             dataBaseController.insertChannel(new ChannelModel(0, "https://globoplay.globo.com/agora-na-globo/", "Globo", "", new File(getClass().getResource("../ui/images/channels/globo.png").getPath())));
             dataBaseController.insertChannel(new ChannelModel(0, "http://violence.com", "Violence TV", "1234", new File(getClass().getResource("../ui/images/channels/fake.png").getPath())));  
         }
+    }
+
+    public boolean editChannel(ChannelModel channel) {
+        return dataBaseController.updateChannel(channel);
     }
     
 }

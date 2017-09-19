@@ -11,6 +11,7 @@ import globaltv.ui.AdminAreaPanel;
 import globaltv.ui.ChannelsPanel;
 import globaltv.ui.CreateChannel;
 import globaltv.ui.CreateUser;
+import globaltv.ui.EditChannelPanel;
 import globaltv.ui.Login;
 import globaltv.ui.UsersPanel;
 import java.awt.CardLayout;
@@ -49,6 +50,7 @@ public class Globaltv {
         contentPane.add(new CreateUser(contentPane, globalTvController), "create-user");
         contentPane.add(new CreateChannel(contentPane, globalTvController), "create-channel");
         contentPane.add(new AdminAreaPanel(contentPane, globalTvController), "admin-area");
+        contentPane.add(new EditChannelPanel(contentPane, globalTvController), "edit-channel");
         frame.setContentPane(contentPane);
         frame.pack();
         frame.setLocationByPlatform(true);

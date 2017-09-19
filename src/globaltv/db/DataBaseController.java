@@ -266,6 +266,36 @@ public class DataBaseController {
             return false;
         }
     }
+
+    public boolean updateChannel(ChannelModel channel) {
+        String sql = "UPDATE channels SET name = ? , "
+                + "addrChannel = ?,"
+                + "code = ?,"
+                + "icon = ? "
+                + "WHERE id = ?";
+        
+        PreparedStatement pstmt;
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, channel.getName());
+            pstmt.setString(2, channel.getAddrChannel());
+            pstmt.setString(3, channel.getCode());
+            try {
+                pstmt.setBytes(4, new FilesHandler().readFile(channel.getIcon()));
+            } catch (SecurityException ex) {
+                Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pstmt.setInt(5, channel.getId());
+            // update
+            pstmt.executeUpdate();
+            pstmt.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
         
     
     
