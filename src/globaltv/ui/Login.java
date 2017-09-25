@@ -79,7 +79,7 @@ public class Login extends javax.swing.JPanel {
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

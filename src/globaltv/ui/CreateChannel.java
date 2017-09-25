@@ -11,10 +11,17 @@ import globaltv.utils.GlobalTvConstants;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -57,7 +64,7 @@ public class CreateChannel extends javax.swing.JPanel {
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel5.setText("Cadastro de Canais");
@@ -194,10 +201,17 @@ public class CreateChannel extends javax.swing.JPanel {
         channel.setAddrChannel(addrChannel.getText());
         channel.setCode(code.getText());
         try {
-            channel.setIcon(jFileChooser.getSelectedFile());
+            channel.setIcon(Files.readAllBytes(jFileChooser.getSelectedFile().toPath()));
         } catch (Exception e) {
              System.out.println("insert fake icon");
-             channel.setIcon(new File(getClass().getResource("images/channels/fake.png").getPath()));
+            try {
+                channel.setIcon(Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("images/channels/fake.png").toURI())));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(CreateChannel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CreateChannel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         channel.setName(name.getText());
         globalTvController.createChannel(channel);
@@ -207,6 +221,7 @@ public class CreateChannel extends javax.swing.JPanel {
 
     private void pickFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickFileActionPerformed
         jFileChooser = new JFileChooser();
+        jFileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg"));
         jFileChooser.showOpenDialog(this);
         
     }//GEN-LAST:event_pickFileActionPerformed

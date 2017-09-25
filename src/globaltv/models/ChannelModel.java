@@ -14,7 +14,7 @@ import java.io.File;
 public class ChannelModel {
     private String addrChannel;
     private String name;
-    private File icon;
+    private byte[] icon;
     private String code;
     private int id;
 
@@ -25,7 +25,7 @@ public class ChannelModel {
     
     
 
-    public ChannelModel(int id, String addrChannel, String name, String code, File icon) {
+    public ChannelModel(int id, String addrChannel, String name, String code, byte[] icon) {
         this.addrChannel = addrChannel;
         this.name = name;
         this.icon = icon;
@@ -68,11 +68,11 @@ public class ChannelModel {
         this.name = name;
     }
 
-    public File getIcon() {
+    public byte[] getIcon() {
         return icon;
     }
 
-    public void setIcon(File icon) {
+    public void setIcon(byte[] icon) {
         this.icon = icon;
     }
 

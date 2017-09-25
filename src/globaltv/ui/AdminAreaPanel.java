@@ -44,7 +44,7 @@ public class AdminAreaPanel extends javax.swing.JPanel {
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         showUsers.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         showUsers.setText("Listar e Editar Usuarios");

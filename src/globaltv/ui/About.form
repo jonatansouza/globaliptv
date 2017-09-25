@@ -88,7 +88,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//logoist.setIcon();&#xa;logoist.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(getClass().getResource(&quot;images/logo-ist.png&quot;)), 128,128));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//logoist.setIcon();&#xa;logoist.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(ClassLoader.getSystemResource(&quot;images/logo-ist.png&quot;)), 128,128));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -104,7 +104,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="iconTv">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="iconTv.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;images/tv-medium.png&quot;)));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="iconTv.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource(&quot;images/tv-medium.png&quot;)));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="banner">
@@ -115,7 +115,7 @@
         <Property name="text" type="java.lang.String" value="Global TV"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="banner.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;images/tv-small.png&quot;)));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource(&quot;images/tv-small.png&quot;)));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

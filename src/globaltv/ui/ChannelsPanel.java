@@ -92,19 +92,7 @@ public class ChannelsPanel extends javax.swing.JPanel {
         channelModel = channel;
         nameDesc.setText( channel.getId() + " - "+channel.getName());
         urlDesc.setText(channel.getAddrChannel());
-        try {
-            File ic = channel.getIcon();
-            if(ic == null){
-                try {
-                    ic = new File(getClass().getResource("images/channels/fake.png").toURI());
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(ChannelsPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            iconDec.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(Files.readAllBytes(ic.toPath())), 175,175));
-        } catch (IOException ex) {
-            Logger.getLogger(ChannelsPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        iconDec.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(channel.getIcon()), 175,175));
         repaint();
     }
     
@@ -148,7 +136,7 @@ public class ChannelsPanel extends javax.swing.JPanel {
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         searchChannel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

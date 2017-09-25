@@ -45,7 +45,7 @@ public class About extends javax.swing.JPanel {
 
         logoist.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         //logoist.setIcon();
-        logoist.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(getClass().getResource("images/logo-ist.png")), 128,128));
+        logoist.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/logo-ist.png")), 128,128));
 
         jButton1.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         jButton1.setText("Voltar");
@@ -55,11 +55,11 @@ public class About extends javax.swing.JPanel {
             }
         });
 
-        iconTv.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-medium.png")));
+        iconTv.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-medium.png")));
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel3.setText("O Global tv é uma aplicação desenvolvida através dos conhecimentos obtidos na Faeterj   ");

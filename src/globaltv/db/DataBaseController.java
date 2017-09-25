@@ -93,11 +93,7 @@ public class DataBaseController {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, channel.getAddrChannel());
             pstmt.setString(2, channel.getName());
-            try {
-                pstmt.setBytes(3, new FilesHandler().readFile(channel.getIcon()));
-            } catch (SecurityException ex) {
-                Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            pstmt.setBytes(3, channel.getIcon());
             pstmt.setString(4, channel.getCode());
             pstmt.executeUpdate();
             return true;
@@ -173,21 +169,9 @@ public class DataBaseController {
                         rs.getInt("id"),
                         rs.getString("addrChannel"),
                         rs.getString("name"),
-                        rs.getString("code"));
-                
-                File file = new File(channel.getName());
-                FileOutputStream fos;
-               try {
-                   fos = new FileOutputStream(file);
-                   fos.write(rs.getBytes("icon"));
-                   fos.close();
+                        rs.getString("code"),
+                        rs.getBytes("icon"));
                    
-                channel.setIcon(file);
-               } catch (FileNotFoundException ex) {
-                   Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-               } catch (IOException ex) {
-                   Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-               }
                 channels.add(channel);
             }
             stmt.close();
@@ -216,21 +200,10 @@ public class DataBaseController {
                         rs.getInt("id"),
                         rs.getString("addrChannel"),
                         rs.getString("name"),
-                        rs.getString("code"));
+                        rs.getString("code"), 
+                        rs.getBytes("icon"));
                 
-               File file = new File(channel.getName());
-                FileOutputStream fos;
-               try {
-                   fos = new FileOutputStream(file);
-                   fos.write(rs.getBytes("icon"));
-                   fos.close();
-                   
-                channel.setIcon(file);
-               } catch (FileNotFoundException ex) {
-                   Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-               } catch (IOException ex) {
-                   Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-               }
+              
             stmt.close();
             return channel;
             }} catch (SQLException ex) {
@@ -281,11 +254,7 @@ public class DataBaseController {
             pstmt.setString(1, channel.getName());
             pstmt.setString(2, channel.getAddrChannel());
             pstmt.setString(3, channel.getCode());
-            try {
-                pstmt.setBytes(4, new FilesHandler().readFile(channel.getIcon()));
-            } catch (SecurityException ex) {
-                Logger.getLogger(DataBaseController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            pstmt.setBytes(4, channel.getIcon());
             pstmt.setInt(5, channel.getId());
             // update
             pstmt.executeUpdate();

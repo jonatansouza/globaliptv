@@ -15,10 +15,12 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -35,26 +37,14 @@ public class EditChannelPanel extends javax.swing.JPanel {
         this.globalTvController = globalTvController;
         this.contentPanel = contentPanel;
         initComponents();
-        populateEditPanel(globalTvController.getChannel());
+   
     }
     
     public void populateEditPanel(ChannelModel channel){
         nameEdit.setText( channel.getName());
         urlEdit.setText(channel.getAddrChannel());
         codeEdit.setText(channel.getCode());
-        try {
-            File ic = channel.getIcon();
-            if(ic == null){
-                try {
-                    ic = new File(getClass().getResource("images/channels/fake.png").toURI());
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(ChannelsPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            currentIcon.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(Files.readAllBytes(ic.toPath())), 128,128));
-        } catch (IOException ex) {
-            Logger.getLogger(ChannelsPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        currentIcon.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(channel.getIcon()), 128,128));
         repaint();
     }
 
@@ -90,7 +80,7 @@ public class EditChannelPanel extends javax.swing.JPanel {
 
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/tv-small.png")));
+        banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel5.setText("Editar Canal");
@@ -148,7 +138,7 @@ public class EditChannelPanel extends javax.swing.JPanel {
         });
 
         jLabel7.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel7.setText("Icone Atual");
+        jLabel7.setText("Preview Icone");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -241,12 +231,12 @@ public class EditChannelPanel extends javax.swing.JPanel {
         channel.setAddrChannel(urlEdit.getText());
         channel.setCode(codeEdit.getText());
         try {
-            channel.setIcon(jFileChooser.getSelectedFile());
-        } catch (Exception e) {
-             System.out.println("sem imagens, mantendo padrao");
-        }
+               channel.setIcon(Files.readAllBytes(jFileChooser.getSelectedFile().toPath()));
+           } catch (Exception e) {
+                System.out.println("sem imagens, mantendo padrao");
+        }   
         channel.setName(nameEdit.getText());
-        System.out.println(channel);
+        
         if(globalTvController.editChannel(channel)) {
                JOptionPane.showMessageDialog(contentPanel, "Canal Editado com sucesso!");
         }
@@ -255,7 +245,11 @@ public class EditChannelPanel extends javax.swing.JPanel {
 
     private void pickFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickFileActionPerformed
         jFileChooser = new JFileChooser();
+        jFileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg"));
         jFileChooser.showOpenDialog(this);
+        if(jFileChooser.getSelectedFile() != null){
+            currentIcon.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(jFileChooser.getSelectedFile().toString()), 128,128));
+        }
         
     }//GEN-LAST:event_pickFileActionPerformed
 
