@@ -53,12 +53,18 @@ public class ChannelsPanel extends javax.swing.JPanel {
             adminArea.setVisible(false);
             deleteChannel.setVisible(false);
             editChannel.setVisible(false);
+            jLabelUsername.setText("Visitante!");
+            jLabelAdminModeInfo.setVisible(false);
+            jlabelAdminInfoControllers.setVisible(false);
             repaint();
         }else{
             loginButton.setText("LogOut");
             adminArea.setVisible(true);
             deleteChannel.setVisible(true);
             editChannel.setVisible(true);
+            jLabelUsername.setText(globalTvController.getUser().getName());
+            jLabelAdminModeInfo.setVisible(true);
+            jlabelAdminInfoControllers.setVisible(true);
             repaint();
         }
         populate(globalTvController.listAllChannels());
@@ -110,7 +116,6 @@ public class ChannelsPanel extends javax.swing.JPanel {
         searchChannel = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         PanelSecundary = new javax.swing.JPanel();
@@ -121,8 +126,14 @@ public class ChannelsPanel extends javax.swing.JPanel {
         deleteChannel = new javax.swing.JButton();
         editChannel = new javax.swing.JButton();
         watch = new javax.swing.JButton();
+        jlabelAdminInfoControllers = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         adminArea = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
+        jLabelAdminModeInfo = new javax.swing.JLabel();
 
+        setBackground(java.awt.SystemColor.text);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -160,13 +171,8 @@ public class ChannelsPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jButton2.setText("Sobre");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setBackground(java.awt.SystemColor.text);
+        jScrollPane2.setForeground(java.awt.SystemColor.text);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,12 +182,15 @@ public class ChannelsPanel extends javax.swing.JPanel {
 
             }
         ));
+        jTable1.setGridColor(java.awt.SystemColor.activeCaptionBorder);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTable1);
+
+        PanelSecundary.setBackground(java.awt.SystemColor.text);
 
         descPainelSecundario.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         descPainelSecundario.setText("Descrição do Canal");
@@ -194,7 +203,8 @@ public class ChannelsPanel extends javax.swing.JPanel {
 
         iconDec.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
 
-        deleteChannel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        deleteChannel.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        deleteChannel.setForeground(java.awt.Color.black);
         deleteChannel.setText("Deletar");
         deleteChannel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +212,8 @@ public class ChannelsPanel extends javax.swing.JPanel {
             }
         });
 
-        editChannel.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        editChannel.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        editChannel.setForeground(java.awt.Color.black);
         editChannel.setText("Editar");
         editChannel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,10 +221,23 @@ public class ChannelsPanel extends javax.swing.JPanel {
             }
         });
 
-        watch.setText("Assistir");
+        watch.setFont(new java.awt.Font("Courier", 1, 18)); // NOI18N
+        watch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_popcorn_36594.png"))); // NOI18N
+        watch.setText("Assistir! ");
         watch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 watchActionPerformed(evt);
+            }
+        });
+
+        jlabelAdminInfoControllers.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        jlabelAdminInfoControllers.setText("Controles Administrativos");
+
+        jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton2.setText("Sobre");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -221,28 +245,35 @@ public class ChannelsPanel extends javax.swing.JPanel {
         PanelSecundary.setLayout(PanelSecundaryLayout);
         PanelSecundaryLayout.setHorizontalGroup(
             PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSecundaryLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(urlDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
-                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(PanelSecundaryLayout.createSequentialGroup()
-                                .addComponent(deleteChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
                         .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(descPainelSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(iconDec, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(57, 57, 57))))
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSecundaryLayout.createSequentialGroup()
+                        .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                                    .addComponent(deleteChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(editChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32))))
+            .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(urlDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelSecundaryLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jlabelAdminInfoControllers)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelSecundaryLayout.setVerticalGroup(
             PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,21 +287,36 @@ public class ChannelsPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(urlDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(watch, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jlabelAdminInfoControllers)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelSecundaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteChannel)
                     .addComponent(editChannel))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        adminArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        adminArea.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         adminArea.setText("Área Administrativa");
         adminArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminAreaActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Courier", 0, 15)); // NOI18N
+        jLabel1.setText("Olá");
+
+        jLabelUsername.setFont(new java.awt.Font("Courier", 0, 15)); // NOI18N
+        jLabelUsername.setText("Visitante!");
+
+        jLabelAdminModeInfo.setBackground(java.awt.SystemColor.info);
+        jLabelAdminModeInfo.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        jLabelAdminModeInfo.setForeground(java.awt.Color.red);
+        jLabelAdminModeInfo.setText("Modo Administrativo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -280,34 +326,45 @@ public class ChannelsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(banner)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(adminArea, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(searchChannel))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addComponent(PanelSecundary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
+                        .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(banner)
+                        .addGap(164, 164, 164)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelAdminModeInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelUsername)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(adminArea, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(banner)
                     .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminArea, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(adminArea, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelUsername))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelAdminModeInfo)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -316,9 +373,7 @@ public class ChannelsPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelSecundary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
-                .addComponent(jButton2)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -443,9 +498,13 @@ public class ChannelsPanel extends javax.swing.JPanel {
     private javax.swing.JButton editChannel;
     private javax.swing.JLabel iconDec;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelAdminModeInfo;
+    private javax.swing.JLabel jLabelUsername;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlabelAdminInfoControllers;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel nameDesc;
     private javax.swing.JTextField searchChannel;

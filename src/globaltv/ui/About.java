@@ -39,15 +39,23 @@ public class About extends javax.swing.JPanel {
         banner = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel2.setText("Sobre");
+        setBackground(java.awt.SystemColor.text);
+
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel2.setText("Descrição:");
 
         logoist.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         //logoist.setIcon();
         logoist.setIcon(new HandlingImages().resize(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/logo-ist.png")), 128,128));
 
         jButton1.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_arrow-back_216437 (1).png"))); // NOI18N
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,10 +70,25 @@ public class About extends javax.swing.JPanel {
         banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel3.setText("O Global tv é uma aplicação desenvolvida através dos conhecimentos obtidos na Faeterj   ");
+        jLabel3.setText("Pedro Henrique Petersen da Costa | EMAIL: pehpetersen@gmail.com");
 
         jLabel4.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel4.setText("Tem como objetivo disponibilizar um ambiente onde os usuários possam assistir tv");
+        jLabel4.setText("Tem como objetivo disponibilizar um ambiente onde os usuários gerenciar canais");
+
+        jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel5.setText("Sobre");
+
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel6.setText("Autores:");
+
+        jLabel7.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel7.setText("O Global tv é uma aplicação desenvolvida através dos conhecimentos obtidos na Faeterj   ");
+
+        jLabel8.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel8.setText("Thiago de Souza Antunes | EMAIL: thiagosouzaantunes@gmail.com");
+
+        jLabel9.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel9.setText("e assistir tv com controle de acesso.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,40 +102,56 @@ public class About extends javax.swing.JPanel {
                 .addGap(236, 236, 236))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(banner)
-                        .addGap(317, 317, 317)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39))
+                .addComponent(banner)
+                .addGap(193, 193, 193)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel9)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1)
-                    .addComponent(banner))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(banner)
+                            .addComponent(jLabel5))
                         .addGap(60, 60, 60)
                         .addComponent(logoist, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addComponent(jButton1)
+                        .addGap(56, 56, 56)
                         .addComponent(iconTv, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addComponent(jLabel8)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,6 +168,11 @@ public class About extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel logoist;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import globaltv.ui.EditChannelPanel;
 import globaltv.ui.Login;
 import globaltv.ui.UsersPanel;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -55,7 +56,8 @@ public class Globaltv {
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
-        frame.setResizable(true);
+        frame.setSize(new Dimension(950, 700));
+        frame.setResizable(false);
     }
     public static void main(String... args) {
         SwingUtilities.invokeLater(new Runnable()

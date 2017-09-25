@@ -62,6 +62,8 @@ public class CreateChannel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         pickFile = new javax.swing.JButton();
 
+        setBackground(java.awt.SystemColor.text);
+
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
         banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
@@ -70,6 +72,7 @@ public class CreateChannel extends javax.swing.JPanel {
         jLabel5.setText("Cadastro de Canais");
 
         jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_arrow-back_216437 (1).png"))); // NOI18N
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +117,7 @@ public class CreateChannel extends javax.swing.JPanel {
         jLabel6.setText("Icone:");
 
         pickFile.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        pickFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_upload-outline_216483.png"))); // NOI18N
         pickFile.setText("escolher arquivo");
         pickFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +136,7 @@ public class CreateChannel extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(51, 51, 51))
+                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -154,7 +158,7 @@ public class CreateChannel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pickFile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +167,7 @@ public class CreateChannel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(banner)
                     .addComponent(jLabel5)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -180,9 +184,9 @@ public class CreateChannel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(pickFile))
-                .addGap(54, 54, 54)
-                .addComponent(createChannel)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(createChannel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

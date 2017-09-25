@@ -47,6 +47,8 @@ public class CreateUser extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(java.awt.SystemColor.text);
+
         banner.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         banner.setText("Global TV");
         banner.setIcon(new javax.swing.ImageIcon(ClassLoader.getSystemResource("images/tv-small.png")));
@@ -69,6 +71,7 @@ public class CreateUser extends javax.swing.JPanel {
 
         username.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +83,7 @@ public class CreateUser extends javax.swing.JPanel {
         jLabel5.setText("Cadastro do Administrador");
 
         jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_arrow-back_216437 (1).png"))); // NOI18N
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,8 +102,8 @@ public class CreateUser extends javax.swing.JPanel {
                         .addComponent(banner)
                         .addGap(140, 140, 140)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,7 +146,7 @@ public class CreateUser extends javax.swing.JPanel {
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jButton1)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

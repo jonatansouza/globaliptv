@@ -72,6 +72,7 @@ public class EditChannelPanel extends javax.swing.JPanel {
         currentIcon = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(java.awt.SystemColor.text);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -86,6 +87,7 @@ public class EditChannelPanel extends javax.swing.JPanel {
         jLabel5.setText("Editar Canal");
 
         jButton2.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if_arrow-back_216437 (1).png"))); // NOI18N
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +215,7 @@ public class EditChannelPanel extends javax.swing.JPanel {
                     .addComponent(pickFile))
                 .addGap(87, 87, 87)
                 .addComponent(editChannel)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
