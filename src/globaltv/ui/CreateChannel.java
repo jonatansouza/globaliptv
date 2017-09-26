@@ -22,6 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -209,9 +210,7 @@ public class CreateChannel extends javax.swing.JPanel {
         } catch (Exception e) {
              System.out.println("insert fake icon");
             try {
-                channel.setIcon(Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("images/channels/fake.png").toURI())));
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(CreateChannel.class.getName()).log(Level.SEVERE, null, ex);
+                channel.setIcon(IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/fake.png")));
             } catch (IOException ex) {
                 Logger.getLogger(CreateChannel.class.getName()).log(Level.SEVERE, null, ex);
             }

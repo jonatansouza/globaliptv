@@ -16,7 +16,7 @@ import java.sql.DriverManager;
 public class DataBaseSqlite {
     public static Connection connect() {
         Connection c = null;
-        File resource = new File("resource");
+        File resource = new File("database");
         if(!resource.isDirectory()){
             System.out.println("Creating dir");
             resource.mkdir();
@@ -24,7 +24,7 @@ public class DataBaseSqlite {
         
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:resource/globaltv.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database/globaltv.db");
             return c;
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );

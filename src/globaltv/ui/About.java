@@ -45,8 +45,6 @@ public class About extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(java.awt.SystemColor.text);
-
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel2.setText("Descrição:");
 
@@ -106,7 +104,7 @@ public class About extends javax.swing.JPanel {
                 .addGap(193, 193, 193)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

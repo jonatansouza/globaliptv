@@ -11,14 +11,21 @@ import globaltv.models.UserModel;
 import globaltv.utils.SortChannelsByName;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -117,6 +124,24 @@ public class GlobalTvController {
         return channels;
     }
 
+    private void initFileSystem(URI uri) 
+{
+    try
+    {
+       FileSystems.getFileSystem(uri);
+    }
+    catch( FileSystemNotFoundException e )
+    {
+        Map<String, String> env = new HashMap<>();
+        env.put("create", "true");
+        try {
+            FileSystems.newFileSystem(uri, env);
+        } catch (IOException ex) {
+            Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+    
     public void initialize() {
         if(dataBaseController.selectAllUsers().size() == 0){
             UserModel u = new UserModel("GlobalTV", "admin", "admin");
@@ -126,25 +151,21 @@ public class GlobalTvController {
             
         if(dataBaseController.selectAllChannels().size() == 0){
             System.out.println("initializing channels");
+            
+            
             try {
-                dataBaseController.insertChannel(new ChannelModel(0, "http://www.sbt.com.br/aovivo/", "SBT", "", Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("images/channels/sbt.png").toURI()))));
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
+                dataBaseController.insertChannel(new ChannelModel(0, "http://www.sbt.com.br/aovivo/", "SBT", "",IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/globo.png"))));
             } catch (IOException ex) {
                 Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                dataBaseController.insertChannel(new ChannelModel(0, "https://globoplay.globo.com/agora-na-globo/", "Globo", "", Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("images/channels/globo.png").toURI()))));
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
+                dataBaseController.insertChannel(new ChannelModel(0, "https://globoplay.globo.com/agora-na-globo/", "Globo", "", IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/globo.png"))));
             } catch (IOException ex) {
                 Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                dataBaseController.insertChannel(new ChannelModel(0, "http://violence.com", "Violence TV", "1234", Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("images/channels/fake.png").toURI()))));
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
+                dataBaseController.insertChannel(new ChannelModel(0, "http://violence.com", "Violence TV", "1234", IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/fake.png"))));
+          } catch (IOException ex) {
                 Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
