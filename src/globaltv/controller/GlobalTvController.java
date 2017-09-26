@@ -154,7 +154,7 @@ public class GlobalTvController {
             
             
             try {
-                dataBaseController.insertChannel(new ChannelModel(0, "http://www.sbt.com.br/aovivo/", "SBT", "",IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/globo.png"))));
+                dataBaseController.insertChannel(new ChannelModel(0, "http://www.sbt.com.br/aovivo/", "SBT", "",IOUtils.toByteArray(ClassLoader.getSystemResourceAsStream("images/channels/sbt.png"))));
             } catch (IOException ex) {
                 Logger.getLogger(GlobalTvController.class.getName()).log(Level.SEVERE, null, ex);
             }
